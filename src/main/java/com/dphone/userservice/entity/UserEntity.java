@@ -4,12 +4,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class UserEntity {
 
 	@Id
 // 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="course_seq")
+//	@SequenceGenerator(
+//		name="course_seq",
+//		sequenceName="course_sequence",
+//		allocationSize=20
+//	)
 	private int userId;
 	private String firstName;
 	private String lastName;
