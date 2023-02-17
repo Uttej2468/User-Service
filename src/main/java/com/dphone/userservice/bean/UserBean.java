@@ -1,5 +1,7 @@
 package com.dphone.userservice.bean;
 
+import java.util.Objects;
+
 public class UserBean {
 
 
@@ -99,6 +101,22 @@ public class UserBean {
 			return "UserBean [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
 					+ address + ", userName=" + userName + ", password=" + password + ", status=" + status + ", email="
 					+ email + ", mobile=" + mobile + ", refcode=" + refcode + "]";
+		}
+		@Override
+		public int hashCode() {
+			return Objects.hash(firstName, refcode, userId);
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			UserBean other = (UserBean) obj;
+			return Objects.equals(firstName, other.firstName) && Objects.equals(refcode, other.refcode)
+					&& userId == other.userId;
 		}
 		
 

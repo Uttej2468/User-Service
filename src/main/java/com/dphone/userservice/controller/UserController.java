@@ -34,7 +34,9 @@ public class UserController {
 	
 	@PostMapping("/addUser")
 	public ResponseEntity<?> addUser(@RequestBody UserBean bean){
-		
+		int temp=bean.getUserId();
+		System.out.println(temp);
+		bean.setRefcode(bean.getUserName()+"@"+ temp);
 		String message = userServiceImpl.addUser(bean);
 		return new ResponseEntity<>(message,HttpStatus.ACCEPTED);
 	}

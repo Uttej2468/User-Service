@@ -1,5 +1,6 @@
 package com.dphone.userservice.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,13 +11,8 @@ import jakarta.persistence.SequenceGenerator;
 public class UserEntity {
 
 	@Id
-// 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="course_seq")
-//	@SequenceGenerator(
-//		name="course_seq",
-//		sequenceName="course_sequence",
-//		allocationSize=20
-//	)
+	@Column(name = "userId")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	private String firstName;
 	private String lastName;
