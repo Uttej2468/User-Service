@@ -27,28 +27,16 @@
 //	@Bean
 //	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //
-//		return http.csrf().disable()
+//		return http.cors().csrf().disable()
 //				.sessionManagement()
 //				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //				.and()
 //				.authorizeHttpRequests()
 //				.requestMatchers("/adduser","/bower_components/*", "/.js",
-//						"/*.jsx", "/main.css")
+//						"/*.jsx", "/main.css","/signup")
 //				.permitAll()
-//				.requestMatchers("/admin")
-//				.hasAuthority("ROLE_ADMIN")
-//				.requestMatchers("/user")
-//				.hasAuthority("ROLE_USER")
-//				.anyRequest().authenticated()
-//				.and().formLogin()
-////				.loginPage("/user/login")
-////				.usernameParameter("userName")
-////				.loginProcessingUrl("/user/login")
-////				.and()
-////				.logout()
-////				.logoutUrl("/user/logout")
-////				.logoutSuccessUrl("/user/login").and().exceptionHandling()
-////				.accessDeniedPage("/accessDenied")
+//				.requestMatchers("/login").permitAll()
+//				.anyRequest()	
 //				.and().build();
 //		
 //		//To redirect .successHandler(customSuccessHandler)

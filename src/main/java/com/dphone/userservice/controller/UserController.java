@@ -28,15 +28,24 @@ public class UserController {
 	@Autowired
 	private UserServiceImpl userServiceImpl;
 	
+	
+	@GetMapping("/check")
+	public String check()
+	{
+		return "Check Method called";
+		
+	}
 	//Adding the New User
 	@PostMapping("/adduser")
 	public ResponseEntity<?> addUser(@RequestBody UserBean bean){
 		
-	
+		
+		String attach = bean.getFirstName()+"@"+bean.getMobile();
+		bean.setRefcode(attach);
 		String message = userServiceImpl.addUser(bean);
 		return new ResponseEntity<>(message,HttpStatus.ACCEPTED);
 	}
-	
+		
 	//Show all existing Users
 	@GetMapping("/selectalluser")
 	public ResponseEntity<?> selectAll() {
@@ -100,6 +109,7 @@ public class UserController {
 	public ResponseEntity<Integer> returnUserIdByRef(){
 		
 		int id=userServiceImpl.returnUserIdByRef();
+		System.out.println(id);
 		return new ResponseEntity<Integer>(id,HttpStatus.OK);
 	}
 	
@@ -135,9 +145,9 @@ public class UserController {
 	}
 	
 	//Just for now before spring security
-	@GetMapping("login/{id}")
-		public ResponseEntity<String> login(@PathVariable int id) {
-			String msg=userServiceImpl.login(id);
+	@GetMapping("login/{username}")
+		public ResponseEntity<String> login(@PathVariable String username) {
+			String msg=userServiceImpl.login(username);
 			return new ResponseEntity<String>(msg,HttpStatus.OK);
 		}
 		

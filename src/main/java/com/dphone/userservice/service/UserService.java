@@ -13,7 +13,7 @@ public interface UserService {
 	public  UserBean findUserById(int userId);
 	public List<UserBean> selectAll();
 	public int returnUserIdByRef();
-	public String login(int id);
+	public String login(String username);
 	public String logout(int id);
 	public String getRefCodeFromUser();
 	public UserBean getActiveUser();

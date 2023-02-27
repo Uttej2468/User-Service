@@ -1,6 +1,9 @@
 package com.dphone.userservice.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,7 +14,7 @@ import jakarta.persistence.Table;
 public class UserEntity {
 
 	@Id
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userId;
 	private String firstName;
 	private String lastName;
@@ -20,7 +23,9 @@ public class UserEntity {
 	private String password;
 	private String status;
 	private String email;
+	@Column(length = 10)
 	private String mobile;
+	@Column(unique = true)
 	private String refcode;
 	private String roles;
 	private int referralPoints;
